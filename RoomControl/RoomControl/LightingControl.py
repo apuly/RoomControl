@@ -1,6 +1,6 @@
 from abc import ABCMeta
 
-class AbstractLamp(object):
+class AbstractLamp(metaclass=ABCMeta):
     def __init__(self, controller):
         self._controller = controller
 
@@ -9,8 +9,6 @@ class AbstractLamp(object):
 
     def off():
         pass
-
-    __metaclass__ = ABCMeta
 
 class DimmerLamp(AbstractLamp):
     def __init__(self, controller):
