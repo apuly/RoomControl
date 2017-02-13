@@ -10,6 +10,7 @@ class AbstractLamp(metaclass=ABCMeta):
     def off():
         pass
 
+
 class DimmerLamp(AbstractLamp):
     def __init__(self, controller):
         self._percent = 0
@@ -24,6 +25,7 @@ class DimmerLamp(AbstractLamp):
     def percent(self, x):
         if 0 < x < 100:
             self._percent = x
+
 
 class RGBLamp(AbstractLamp):
     def __init__(self, controller):
