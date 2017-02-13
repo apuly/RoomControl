@@ -5,10 +5,16 @@ class Action(object):
 
     __metaclass__ = ABCMeta
 
-    def __init__(self, *_v):
-        self.v = _v
-        self._r = 0
-        pass
+    _R_WEIGHT = .2126
+    _G_WEIGHT = .7152
+    _B_WEIGHT = .0722
+
+    def __init__(self, *v):
+        self.v = v
+        self._r = .0
+        self._g = .0
+        self._b = .0
+        self._t = .0
 
 
 # Red
@@ -21,31 +27,34 @@ class Action(object):
         self._r = r
 # Green
     @property
-    def g(self): return self.g
+    def g(self):
+        return self._g
     @g.setter
-    def g(self, _g): self.g = _g
+    def g(self, g): self._g = g
 
 # Blue
     @property
-    def b(self): return self.b
+    def b(self): return self._b
     @b.setter
-    def b(self, _b): self.b = _b
+    def b(self, b): self._b = b
 
 
     def rgb(self):
         return self.r, self.g, self.b
 
 # This would be called instead of rgb when sending to a dimmerlamp
-    def intensity(self):
-        r_wgt = .2126
-        g_wgt = .7152
-        b_wgt = .0722
-        return self.r * r_wgt
-
-
+    def luminosity(self):
+        return self.r * self._R_WEIGHT\
+             + self.g * self._G_WEIGHT\
+             + self.b * self._B_WEIGHT
 
 
     @property
-    def t(self): return self.t
+    def t(self): return self._t
+    @t.setter
+    def t(self, t): self._t = t
 
-    def time(self): return self.t() # Because Paul is stupid <3
+    @property
+    def time(self): return self.t # Because Paul is stupid <3
+    @time.setter
+    def time(self, t): self._t = t
