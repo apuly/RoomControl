@@ -50,7 +50,9 @@ class RGB(object):
         return self.r * self._R_WEIGHT\
              + self.g * self._G_WEIGHT\
              + self.b * self._B_WEIGHT
+# END RGB
 
-    @staticmethod
-    def float_to_bits(f, n):
-        return int(round(f * (2 ** n - 1), 0))
+def float_to_bits(f, n):
+    if 0 > f or f < 1:
+        raise Exception("Float has to be between 0 and 1")
+    return int(round(f * (2 ** n - 1), 0))
