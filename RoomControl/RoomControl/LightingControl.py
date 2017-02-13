@@ -1,8 +1,8 @@
-class LightingControl(object):
+class DimmerLamp(object):
     pass
 
-class RGBLight(object):
+class RGBLamp(object):
     pass
 
-class LampControl(object):
+class OnOffLamp(object):
     pass
