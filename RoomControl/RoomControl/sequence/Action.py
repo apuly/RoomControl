@@ -58,3 +58,7 @@ class Action(object):
     def time(self): return self.t # Because Paul is stupid <3
     @time.setter
     def time(self, t): self._t = t
+
+
+    def update(self, *v):
+        return
