@@ -6,3 +6,6 @@ class RGBLamp(object):
 
 class OnOffLamp(object):
     pass
+
+
+#lol
