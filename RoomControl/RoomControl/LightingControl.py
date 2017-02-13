@@ -12,8 +12,9 @@ class AbstractLamp(metaclass=ABCMeta):
 
 class DimmerLamp(AbstractLamp):
     def __init__(self, controller):
-        return super().__init__(controller)
         self._percent = 0
+
+        return super().__init__(controller)
 
     @property
     def percent(self):
@@ -26,10 +27,11 @@ class DimmerLamp(AbstractLamp):
 
 class RGBLamp(AbstractLamp):
     def __init__(self, controller):
-        return super().__init__(controller)
         self._r = 0
         self._g = 0
         self._b = 0
+        return super().__init__(controller)
+        
 
     @property
     def r(self):
