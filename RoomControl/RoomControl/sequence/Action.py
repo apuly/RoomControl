@@ -7,14 +7,18 @@ class Action(object):
 
     def __init__(self, *_v):
         self.v = _v
+        self._r = 0
         pass
 
 
 # Red
     @property
-    def r(self): return self.r
+    def r(self):
+        return self._r
+
     @r.setter
-    def r(self, _r): self.r = _r
+    def r(self, r):
+        self._r = r
 # Green
     @property
     def g(self): return self.g
