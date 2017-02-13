@@ -27,9 +27,9 @@ class DimmerLamp(AbstractLamp):
 
 class RGBLamp(AbstractLamp):
     def __init__(self, controller):
-        self._r = 0
-        self._g = 0
-        self._b = 0
+        self._r = 0.0
+        self._g = 0.0
+        self._b = 0.0
         return super().__init__(controller)
         
 
@@ -47,17 +47,17 @@ class RGBLamp(AbstractLamp):
 
     @r.setter
     def r(self, x):
-        if 0 < x < 255:
+        if 0 < x < 1:
             self._r = x
 
     @g.setter
     def g(self, x):
-        if 0 < x < 255:
+        if 0 < x < 1:
             self._g = x
 
     @b.setter
     def b(self, x):
-        if 0 < x < 255:
+        if 0 < x < 1:
             self._b = x
 
 class Lamp(AbstractLamp):
