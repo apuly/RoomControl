@@ -90,4 +90,4 @@ class Luminosity(Light):
 
     def luminosity(self):
         return self.l
-
+# END Luminosity
