@@ -70,7 +70,9 @@ class RGBLight(DimmedLight, metaclass = ABCMeta):
     _G_WEIGHT = .7152
     _B_WEIGHT = .0722
 
-    def __init__(self, *v):
+    def __init__(self, min, max, *v):
+        super(DimmedLight, self).__init__(min, max)
+        
         if len(v) is 3:
             self.r = v[0]
             self.g = v[1]
@@ -87,7 +89,10 @@ class RGBLight(DimmedLight, metaclass = ABCMeta):
 
     @r.setter
     def r(self, r):
-        self._r = r
+        if self._min > r > self._max:
+            pass
+        else:
+             self._r = r
         # Green
 
     @property
@@ -96,7 +101,10 @@ class RGBLight(DimmedLight, metaclass = ABCMeta):
 
     @g.setter
     def g(self, g):
-        self._g = g
+        if self._min > g > self._max:
+            pass
+        else:
+            self._g = g
 
     # Blue
     @property
@@ -105,7 +113,10 @@ class RGBLight(DimmedLight, metaclass = ABCMeta):
 
     @b.setter
     def b(self, b):
-        self._b = b
+        if self._min > g > self._max:
+            pass
+        else:
+            self._b = b
 
     def rgb(self):
         return self.r, self.g, self.b
