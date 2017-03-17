@@ -29,6 +29,16 @@ class DimmedLight(Light, metaclass = ABCMeta):
             self._brightness = x
             
     @property
+    def luminosity(self):
+        return ((self._brightness - self._min) / (self._max - self._min)) * 100
+    
+    @luminosity.setter(self, x):
+        if 0 > x > 100:
+            pass
+        else:
+            self._brightness = int((self._max - self._min) * (x/100) + self._min)
+            
+    @property
     def min(self):
         return min
     
