@@ -1,5 +1,4 @@
-from abc import ABCMeta, abstractmethod, abstractproperty
-
+from abc import ABCMeta, abstractmethod
 
 """
 This class is here to join luminosity and rgb as a common class, in this way they can be used interchangably with dimmer- and rgb-lights
