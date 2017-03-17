@@ -87,3 +87,10 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# Visual studio project files
+.sln
+.pyproj
+
+#idea IDE project files
+.idea/
