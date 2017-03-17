@@ -1,26 +1,60 @@
-from abc import ABCMeta, abstractmethod
+from abc import ABCMeta, abstractmethod, abstractproperty
 
 
 """
 This class is here to join luminosity and rgb as a common class, in this way they can be used interchangably with dimmer- and rgb-lights
 """
 class Light(metaclass = ABCMeta):
+    @abstractmethod
+    def on()
+    
+    @abstractmethod
+    def off()
+    
+class DimmedLight(Light, metaclass = ABCMeta):
+    def __init__(self, min = 0, max=255):
+        self._brightness = 0
+        self._min = min
+        self._max = max
+        
+    @property
+    def brightness(self):
+        return self._brightness
+    
+    @brightness.setter
+    def brightnesS(self, x):
+        if self._min > x > max:
+            pass
+        else:
+            self._brightness = x
+            
+    @property
+    def min(self):
+        return min
+    
+    @min.setter
+    def min(self, x):
+        self._min = x
+        
+    @property
+    def max(self):
+        return self._max
+    
+    @max.setter
+    def max(self, x):
+        self._max = x
+        
+    @abstractmethod
+    def update():
+        pass
+     
     @staticmethod
     def float_to_bits(f, n):
         if 0 > f or f < 1:
             raise Exception("Float has to be between 0 and 1")
         return int(round(f * (2 ** n - 1), 0))
 
-    @abstractmethod
-    def rgb(self):
-        pass
-
-    @abstractmethod
-    def luminosity(self):
-        pass
-
-
-class RGB(Light):
+class RGBLight(DimmedLight, metaclass = ABCMeta):
     # Weights for luminosity conversion
     _R_WEIGHT = .2126
     _G_WEIGHT = .7152
@@ -65,29 +99,4 @@ class RGB(Light):
 
     def rgb(self):
         return self.r, self.g, self.b
-
-    # This would be called instead of rgb when sending to a dimmerlamp
-    def luminosity(self):
-        return self.r * self._R_WEIGHT\
-             + self.g * self._G_WEIGHT\
-             + self.b * self._B_WEIGHT
 # END RGB
-
-class Luminosity(Light):
-
-    def __init__(self, l = .0):
-        self._l = l
-
-
-    @property
-    def l(self): return self._l
-    @l.setter
-    def l(self, l): self._l = l
-
-# From parentclass
-    def rgb(self):
-        return self.l, self.l, self.l
-
-    def luminosity(self):
-        return self.l
-# END Luminosity
